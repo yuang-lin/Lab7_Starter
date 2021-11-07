@@ -3,7 +3,6 @@
 
 const CACHE_NAME = 'lab-7-starter';
 const urlsToCache = [
-  '/Lab7_Starter/',
   '/Lab7_Starter/index.html',
   '/Lab7_Starter/favicon.ico',
   '/Lab7_Starter/assets/images/icons/0-star.svg',
@@ -20,16 +19,14 @@ const urlsToCache = [
   '/Lab7_Starter/assets/components/RecipeExpand.js'
 ];
 
-self.addEventListener('install', function (event) {
-    /**
-     * TODO - Part 2 Step 2
-     * Create a function as outlined above
-     */
+self.addEventListener('install', function(event) {
+  // Perform install steps
   event.waitUntil(
-    caches.open(CACHE_NAME).then(function(cache) {
-      console.log('Opened cache');
-      return cache.addAll(urlsToCache);
-    })
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
   );
 });
 
