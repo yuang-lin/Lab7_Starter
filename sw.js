@@ -6,7 +6,8 @@ const CACHE_NAME = 'lab-7-starter';
 // Once the service worker has been installed, feed it some initial URLs to cache
 self.addEventListener('install', function (event) {
   var urlsToCache = [
-  '/'
+  '/',
+    
   ];
   event.waitUntil(
     caches.open(CACHE_NAME)
