@@ -2,33 +2,41 @@
 //         so do not move it next to the other scripts
 
 const CACHE_NAME = 'lab-7-starter';
-
+const urlsToCache = [
+  '/Lab7_Starter/',
+  '/Lab7_Starter/index.html',
+  '/Lab7_Starter/favicon.ico',
+  '/Lab7_Starter/assets/images/icons/0-star.svg',
+  '/Lab7_Starter/assets/images/icons/1-star.svg',
+  '/Lab7_Starter/assets/images/icons/2-star.svg',
+  '/Lab7_Starter/assets/images/icons/3-star.svg',
+  '/Lab7_Starter/assets/images/icons/4-star.svg',
+  '/Lab7_Starter/assets/images/icons/5-star.svg',
+  '/Lab7_Starter/assets/images/icons/arrow-down.png',
+  '/Lab7_Starter/assets/styles/main.css',
+  '/Lab7_Starter/assets/scripts/main.js',
+  '/Lab7_Starter/assets/scripts/Router.js',
+  '/Lab7_Starter/assets/components/RecipeCard.js',
+  '/Lab7_Starter/assets/components/RecipeExpand.js',
+  'https://introweb.tech/assets/json/ghostCookies.json',
+  'https://introweb.tech/assets/json/birthdayCake.json',
+  'https://introweb.tech/assets/json/chocolateChip.json',
+  'https://introweb.tech/assets/json/stuffing.json',
+  'https://introweb.tech/assets/json/turkey.json',
+  'https://introweb.tech/assets/json/pumpkinPie.json'
+];
 // Once the service worker has been installed, feed it some initial URLs to cache
 self.addEventListener('install', function (event) {
     /**
      * TODO - Part 2 Step 2
      * Create a function as outlined above
      */
-    const urlsToCache = [
-        '/',
-        /*
-        '/assets/components/RecipeCard.js',
-        '/assets/components/RecipeExpand.js',
-        '/assets/scripts/Router.js',
-        '/assets/styles/main.css',
-        '/assets/scripts/main.js',
-        '/assets/images/icons/arrow-down.png',
-        '/favicon.ico'
-        */
-    ];
-
-    // Perform install steps
-    event.waitUntil(
-        caches.open(CACHE_NAME).then(function (cache) {
-            console.log('Opened cache');
-            return cache.addAll(urlsToCache);
-        })
-    );
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(function(cache) {
+      console.log('Opened cache');
+      return cache.addAll(urlsToCache);
+    })
+  );
 });
 
 
@@ -42,19 +50,7 @@ self.addEventListener('activate', function (event) {
    * TODO - Part 2 Step 3
    * Create a function as outlined above, it should be one line
    */
-    var cacheAllowlist = [CACHE_NAME];
-    event.waitUntil(
-        caches.keys()
-          .then(function (cacheNames) {
-            return Promise.all(
-                cacheNames.map(function (cacheName) {
-                    if (cacheAllowlist.indexOf(cacheName) === -1) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            )
-        })
-    )
+  event.waitUntil(clients.claim());
 });
 
 // Intercept fetch requests and store them in the cache
