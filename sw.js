@@ -2,7 +2,7 @@
 //         so do not move it next to the other scripts
 
 const CACHE_NAME = 'lab-7-starter';
-const urlsToCache = [
+var urlsToCache = [
   '/Lab7_Starter/index.html',
   '/Lab7_Starter/favicon.ico',
   '/Lab7_Starter/assets/images/icons/0-star.svg',
