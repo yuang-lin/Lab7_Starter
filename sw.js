@@ -5,18 +5,32 @@ const CACHE_NAME = 'lab-7-starter';
 
 // Once the service worker has been installed, feed it some initial URLs to cache
 self.addEventListener('install', function (event) {
-  var urlsToCache = [
-  '/',
-    
-  ];
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
-  );
+    /**
+     * TODO - Part 2 Step 2
+     * Create a function as outlined above
+     */
+    const urlsToCache = [
+        '/',
+        /*
+        '/assets/components/RecipeCard.js',
+        '/assets/components/RecipeExpand.js',
+        '/assets/scripts/Router.js',
+        '/assets/styles/main.css',
+        '/assets/scripts/main.js',
+        '/assets/images/icons/arrow-down.png',
+        '/favicon.ico'
+        */
+    ];
+
+    // Perform install steps
+    event.waitUntil(
+        caches.open(CACHE_NAME).then(function (cache) {
+            console.log('Opened cache');
+            return cache.addAll(urlsToCache);
+        })
+    );
 });
+
 
 /**
  * Once the service worker 'activates', this makes it so clients loaded
