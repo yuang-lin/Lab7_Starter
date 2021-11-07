@@ -17,15 +17,9 @@ const urlsToCache = [
   '/Lab7_Starter/assets/scripts/main.js',
   '/Lab7_Starter/assets/scripts/Router.js',
   '/Lab7_Starter/assets/components/RecipeCard.js',
-  '/Lab7_Starter/assets/components/RecipeExpand.js',
-  'https://introweb.tech/assets/json/ghostCookies.json',
-  'https://introweb.tech/assets/json/birthdayCake.json',
-  'https://introweb.tech/assets/json/chocolateChip.json',
-  'https://introweb.tech/assets/json/stuffing.json',
-  'https://introweb.tech/assets/json/turkey.json',
-  'https://introweb.tech/assets/json/pumpkinPie.json'
+  '/Lab7_Starter/assets/components/RecipeExpand.js'
 ];
-// Once the service worker has been installed, feed it some initial URLs to cache
+
 self.addEventListener('install', function (event) {
     /**
      * TODO - Part 2 Step 2
