@@ -27,7 +27,19 @@ self.addEventListener('activate', function (event) {
    * TODO - Part 2 Step 3
    * Create a function as outlined above, it should be one line
    */
-  event.waitUntil(clients.claim());
+    var cacheAllowlist = [CACHE_NAME];
+    event.waitUntil(
+        caches.keys()
+          .then(function (cacheNames) {
+            return Promise.all(
+                cacheNames.map(function (cacheName) {
+                    if (cacheAllowlist.indexOf(cacheName) === -1) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            )
+        })
+    )
 });
 
 // Intercept fetch requests and store them in the cache
